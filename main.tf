@@ -7,5 +7,5 @@ resource "aws_route53_record" "www" {
   name    = var.sub_domain_record
   type    = "A"
   ttl     = 300
-  records = ["3.73.29.49"]
+  records = ["${var.record}"]
 }
