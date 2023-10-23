@@ -57,7 +57,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -no-color -input=false -var="domain=${ROUTE53_ZONE}" -var="record=${ROUTE53_RECORD}"
+        run: terraform plan -no-color
         continue-on-error: true
 
       - name: Update Pull Request
@@ -96,4 +96,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false -var="domain=${ROUTE53_ZONE}" -var="record=${ROUTE53_RECORD}"
+        run: terraform apply -auto-approve -input=false
