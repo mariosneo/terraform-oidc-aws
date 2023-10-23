@@ -57,7 +57,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -no-color -var="record=${ROUTE53_RECORD}"
+        run: terraform plan -no-color -var="record=${ROUTE53_RECORD}" -var="domain=${ROUTE53_ZONE}"
         continue-on-error: true
 
       - name: Update Pull Request
