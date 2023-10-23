@@ -19,10 +19,10 @@ variable "sub_domain_record" {
 #   type        = string
 # }
 
-variable "region" {
-  description = "The aws region. https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html"
-  type        = string
-}
+# variable "region" {
+#   description = "The aws region. https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html"
+#   type        = string
+# }
 
 variable "record" {
   description = "route53 record values"
