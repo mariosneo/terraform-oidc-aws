@@ -1,12 +1,12 @@
 variable "domain" {
   description = "value of domain"
-  type = string
+  type        = string
 }
 
 variable "sub_domain_record" {
-  default = "dev"
+  default     = "dev"
   description = "value of domain"
-  type = string
+  type        = string
 }
 
 # variable "aws_access_key" {
@@ -24,7 +24,7 @@ variable "region" {
   type        = string
 }
 
-variable "record"{
-    description = "route53 record values"
-    type = string
+variable "record" {
+  description = "route53 record values"
+  type        = string
 }
