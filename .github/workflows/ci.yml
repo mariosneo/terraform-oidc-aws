@@ -48,7 +48,7 @@ jobs:
         env:
           AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
           AWS_BUCKET_KEY_NAME: ${{ secrets.AWS_BUCKET_KEY_NAME }}
-        run: terraform init -backend-config="bucket=${AWS_BUCKET_NAME}" -backend-config="key=${AWS_BUCKET_KEY_NAME}" -backend-config="region=${AWS_REGION}"
+        run: terraform init -backend-config="bucket=${AWS_BUCKET_NAME}" -backend-config="key=${AWS_BUCKET_KEY_NAME}" -backend-config="region=${AWS_REGION}" 
       
       - name: Terraform Validate
         id: validate
@@ -57,7 +57,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -no-color -var="record=${ROUTE53_RECORD}"
+        run: terraform plan -no-color -var="record=${ROUTE53_RECORD}" -var="domain=${ROUTE53_ZONE}"
         continue-on-error: true
 
       - name: Update Pull Request
@@ -96,4 +96,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -var="zone=${ROUTE53_ZONE}" -auto-approve -input=false
+        run: terraform apply -var="domain=${ROUTE53_ZONE}" -auto-approve -input=false
