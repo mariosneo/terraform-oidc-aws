@@ -96,4 +96,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -var="domain=${ROUTE53_ZONE}" -auto-approve -input=false
+        run: terraform apply -var="domain=${ROUTE53_ZONE}" -var="record=${ROUTE53_RECORD}" -auto-approve -input=false
