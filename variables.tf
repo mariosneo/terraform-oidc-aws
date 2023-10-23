@@ -26,5 +26,5 @@ variable "region" {
 
 variable "record"{
     description = "route53 record values"
-    type = list(string)
+    type = string
 }
