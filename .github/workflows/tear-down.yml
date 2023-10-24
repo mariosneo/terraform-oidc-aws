@@ -54,4 +54,4 @@ jobs:
         run: terraform init -backend-config="bucket=${AWS_BUCKET_NAME}" -backend-config="key=${AWS_BUCKET_KEY_NAME}" -backend-config="region=${AWS_REGION}" 
 
       - name: Terraform Destroy
-        run: terraform destroy -auto-approve
+        run: terraform destroy -var="domain=${ROUTE53_ZONE}" -var="record=${ROUTE53_RECORD}" -auto-approve
