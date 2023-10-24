@@ -5,6 +5,18 @@ on:
     branches:
       - main
   pull_request:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'information'
+        type: choice
+        options:
+          - information
+          - debug
+          - warning
+          - critical
 permissions:
   id-token: write
   contents: read
@@ -15,7 +27,7 @@ env:
   ROUTE53_ZONE: ${{ secrets.ROUTE53_HOSTED_ZONE }}
   ROUTE53_RECORD: ${{ secrets.ROUTE53_RECORD }}
 jobs:
-  terraform:
+  terraform_apply:
     name: "Terraform"
     runs-on: ubuntu-latest
     defaults:

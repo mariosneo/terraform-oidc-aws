@@ -1,21 +1,26 @@
 {
-    "Version": "2012-10-17", 
-    "Statement": [ 
-        { 
+    "Version": "2012-10-17",
+    "Statement": [
+        {
             "Effect": "Allow",
             "Action": [
                 "route53:GetHostedZone",
-                "route53:ChangeResourceRecordSets", 
-                "route53:ListResourceRecordSets"
+                "route53:ChangeResourceRecordSets",
+                "route53:ListResourceRecordSets",
+                "route53:ListTagsForResource",
+                "route53:GetChange"
             ],
-            "Resource": "arn:aws:route53:::hostedzone/[Hosted zone ID here]"
-        }, 
-        { 
-            "Effect": "Allow", 
-            "Action": [ 
-                "route53:ListHostedZones"
-            ], 
-            "Resource": "*" 
-        } 
-    ] 
+            "Resource": "arn:aws:route53:::hostedzone/ZONE-ID"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "route53:ListHostedZones",
+                "route53:GetChange",
+                "route53:CreateHostedZone",
+                "route53:ListHostedZonesByName"
+            ],
+            "Resource": "*"
+        }
+    ]
 }
